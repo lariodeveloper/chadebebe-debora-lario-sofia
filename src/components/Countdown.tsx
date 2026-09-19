@@ -105,7 +105,7 @@ export default function Countdown() {
               <Typography
                 variant="h4"
                 color="primary.dark"
-                fontWeight={600}
+                sx={{ fontWeight: 600 }}
               >
                 {String(value).padStart(
                   2,
