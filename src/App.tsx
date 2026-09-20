@@ -1,7 +1,7 @@
 import Hero from "./components/Hero";
 import Countdown from "./components/Countdown";
 import EventInfo from "./components/EventInfo";
-import ConfirmationForm from "./components/ConfirmationForm";
+import GiftSuggestions from "./components/GiftSuggestions";
 import Footer from "./components/Footer";
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
       <Hero />
       <Countdown />
       <EventInfo />
-      <ConfirmationForm />
+      <GiftSuggestions />
       <Footer />
     </>
   );

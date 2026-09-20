@@ -72,14 +72,18 @@ export default function Countdown() {
   ];
 
   return (
-    <Box sx={{ py: 8 }}>
+    <Box sx={{ py: { xs: 6, sm: 7 } }}>
       <Container maxWidth="sm">
         <Typography
-          variant="h4"
           align="center"
-          color="primary.dark"
+          sx={{
+            fontFamily: '"Baloo 2", sans-serif',
+            fontWeight: 600,
+            fontSize: "1.4rem",
+            color: "primary.dark",
+          }}
         >
-          Estamos contando os dias ❤️
+          Estamos contando os dias
         </Typography>
 
         <Box
@@ -87,7 +91,7 @@ export default function Countdown() {
             display: "grid",
             gridTemplateColumns:
               "repeat(4, 1fr)",
-            gap: 2,
+            gap: { xs: 1.5, sm: 2 },
             mt: 3,
           }}
         >
@@ -96,16 +100,21 @@ export default function Countdown() {
               key={label}
               elevation={0}
               sx={{
-                p: 2,
+                py: 2,
                 textAlign: "center",
-                backgroundColor:
-                  "primary.light",
+                backgroundColor: "#FCEAEF",
+                border: "2px dashed",
+                borderColor: "primary.light",
+                borderRadius: "20px",
               }}
             >
               <Typography
-                variant="h4"
-                color="primary.dark"
-                sx={{ fontWeight: 600 }}
+                sx={{
+                  fontFamily: '"Baloo 2", sans-serif',
+                  fontWeight: 700,
+                  fontSize: { xs: "1.6rem", sm: "2rem" },
+                  color: "primary.dark",
+                }}
               >
                 {String(value).padStart(
                   2,

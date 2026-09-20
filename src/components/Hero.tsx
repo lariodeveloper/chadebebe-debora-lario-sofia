@@ -1,78 +1,123 @@
-import {
-  Box,
-  Chip,
-  Container,
-  Typography,
-} from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
 
-import FavoriteIcon from "@mui/icons-material/Favorite";
+import { BearPeek, Heart, RibbonBow } from "./decorations";
+import ConfirmationForm from "./ConfirmationForm";
+
+const CONFETTI: Array<{
+  top: string;
+  left: string;
+  size: number;
+  color: string;
+  opacity: number;
+}> = [
+  { top: "6%", left: "8%", size: 16, color: "#E85D8A", opacity: 0.5 },
+  { top: "10%", left: "88%", size: 12, color: "#90A378", opacity: 0.6 },
+  { top: "40%", left: "4%", size: 14, color: "#90A378", opacity: 0.5 },
+  { top: "38%", left: "93%", size: 10, color: "#E85D8A", opacity: 0.5 },
+];
 
 export default function Hero() {
   return (
     <Box
       sx={{
-        minHeight: "90vh",
-        display: "flex",
-        alignItems: "center",
+        position: "relative",
+        overflow: "hidden",
         textAlign: "center",
-        background:
-          "radial-gradient(circle at top, #FCECEF 0%, #FFF9F8 55%)",
+        pt: { xs: 6, sm: 8 },
+        pb: { xs: 5, sm: 7 },
+        background: `
+          radial-gradient(circle at 15% 10%, #FBD8E1 0%, transparent 45%),
+          radial-gradient(circle at 85% 15%, #FCE4EA 0%, transparent 40%),
+          radial-gradient(circle at 50% 100%, #FBD8E1 0%, transparent 60%),
+          #FDF5F2
+        `,
       }}
     >
+      {CONFETTI.map((heart, index) => (
+        <Heart
+          key={index}
+          size={heart.size}
+          color={heart.color}
+          sx={{
+            position: "absolute",
+            top: heart.top,
+            left: heart.left,
+            opacity: heart.opacity,
+            display: { xs: "none", sm: "block" },
+          }}
+        />
+      ))}
+
+      <RibbonBow
+        size={64}
+        sx={{
+          position: "absolute",
+          top: { xs: 8, sm: 20 },
+          left: { xs: 4, sm: 24 },
+          transform: "rotate(-12deg)",
+        }}
+      />
+
+      <BearPeek
+        size={92}
+        sx={{
+          position: "absolute",
+          top: { xs: -6, sm: 0 },
+          right: { xs: -6, sm: 16 },
+        }}
+      />
+
       <Container maxWidth="sm">
         <Typography
-          variant="overline"
           sx={{
-            color: "primary.main",
-            letterSpacing: 3,
+            fontFamily: '"Baloo 2", sans-serif',
             fontWeight: 600,
+            fontSize: { xs: "1.25rem", sm: "1.6rem" },
+            color: "text.primary",
           }}
         >
-          UM MOMENTO MUITO ESPECIAL
+          Chá de bebê da
         </Typography>
 
         <Typography
-          variant="h1"
           sx={{
-            fontSize: {
-              xs: "4rem",
-              sm: "6rem",
-            },
-            color: "primary.dark",
-            mt: 2,
+            fontFamily: '"Leckerli One", cursive',
+            fontWeight: 400,
+            fontSize: { xs: "3.6rem", sm: "5.2rem" },
+            lineHeight: 1,
+            color: "primary.main",
+            mt: 0.5,
           }}
         >
           Sofia
         </Typography>
 
         <Typography
-          variant="h4"
           sx={{
-            fontFamily: '"Playfair Display", serif',
-            fontWeight: 400,
+            maxWidth: 420,
+            mx: "auto",
+            mt: 2,
+            color: "text.secondary",
+            lineHeight: 1.7,
+            fontSize: "1rem",
           }}
         >
-          Chá de Bebê
+          Estou quase chegando! Papai e mamãe estão muito felizes. Venha
+          comemorar conosco.
         </Typography>
 
         <Typography
           sx={{
-            mt: 3,
-            color: "text.secondary",
-            lineHeight: 1.8,
+            mt: 1.5,
+            fontWeight: 600,
+            fontSize: "0.95rem",
+            color: "primary.dark",
           }}
         >
-          Uma nova vida está chegando para encher
-          nossos dias de amor, carinho e muitos
-          sorrisos.
+          27 de setembro de 2026 · Vila Isabel
         </Typography>
 
-        <Chip
-          icon={<FavoriteIcon />}
-          label="Você é nosso convidado especial"
-          color="primary"
-          sx={{ mt: 4 }}
-        />
+        <ConfirmationForm />
       </Container>
     </Box>
   );

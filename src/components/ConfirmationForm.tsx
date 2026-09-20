@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 
 import { supabase } from "../supabase";
+import { Heart } from "./decorations";
 
 export default function ConfirmationForm() {
   const [name, setName] = useState<string>("");
@@ -61,26 +62,46 @@ export default function ConfirmationForm() {
       <Paper
         elevation={0}
         sx={{
-          maxWidth: 600,
+          maxWidth: 480,
           mx: "auto",
-          my: 8,
-          p: 5,
+          mt: { xs: 3, sm: 4 },
+          p: { xs: 3, sm: 4 },
           textAlign: "center",
-          backgroundColor:
-            "primary.light",
+          backgroundColor: "#FCEAEF",
+          border: "2px dashed",
+          borderColor: "primary.main",
+          borderRadius: "32px",
         }}
       >
-        <Typography
-          variant="h3"
-          color="primary.dark"
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            gap: 1,
+            mb: 1,
+          }}
         >
-          Presença confirmada! ❤️
+          <Heart size={18} />
+          <Heart size={22} />
+          <Heart size={18} />
+        </Box>
+
+        <Typography
+          sx={{
+            fontFamily: '"Baloo 2", sans-serif',
+            fontWeight: 600,
+            fontSize: "1.5rem",
+            color: "primary.dark",
+          }}
+        >
+          Presença confirmada!
         </Typography>
 
         <Typography
           sx={{
-            mt: 2,
-            lineHeight: 1.8,
+            mt: 1.5,
+            lineHeight: 1.7,
+            color: "text.primary",
           }}
         >
           Obrigado, {name}!
@@ -97,21 +118,27 @@ export default function ConfirmationForm() {
     <Paper
       elevation={0}
       sx={{
-        maxWidth: 600,
+        maxWidth: 480,
         mx: "auto",
-        my: 8,
+        mt: { xs: 3, sm: 4 },
         p: {
           xs: 3,
-          sm: 5,
+          sm: 4,
         },
-        border:
-          "1px solid #F3DDE1",
+        backgroundColor: "#FCEAEF",
+        border: "2px dashed",
+        borderColor: "primary.main",
+        borderRadius: "32px",
       }}
     >
       <Typography
-        variant="h3"
         align="center"
-        color="primary.dark"
+        sx={{
+          fontFamily: '"Baloo 2", sans-serif',
+          fontWeight: 600,
+          fontSize: "1.4rem",
+          color: "primary.dark",
+        }}
       >
         Confirme sua presença
       </Typography>
@@ -120,8 +147,9 @@ export default function ConfirmationForm() {
         align="center"
         color="text.secondary"
         sx={{
-          mt: 1,
-          mb: 4,
+          mt: 0.5,
+          mb: 2.5,
+          fontSize: "0.9rem",
         }}
       >
         Será muito especial ter você
@@ -134,7 +162,7 @@ export default function ConfirmationForm() {
         sx={{
           display: "flex",
           flexDirection: "column",
-          gap: 2,
+          gap: 1.5,
         }}
       >
         <TextField
